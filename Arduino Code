@@ -1,0 +1,23 @@
+#define BLYNK_TEMPLATE_ID "TMPL2HD0l0eDw"
+#define BLYNK_TEMPLATE_NAME "Kanda"
+
+#define BLYNK_PRINT Serial
+#include <ESP8266WiFi.h>  // Use <WiFi.h> for ESP32
+#include <BlynkSimpleEsp8266.h>  // Use <BlynkSimpleEsp32.h> for ESP32
+
+char auth[] = "RpZ4ghf4XkFVWcNuZtqWnd2Sd-A9foa0"; // Replace with your Blynk token
+char ssid[] = "Kanda";       // Replace with your WiFi SSID
+char pass[] = "Kanda1234";   // Replace with your WiFi Password
+
+int relayPin = 4; // D2 for ESP8266, GPIO4 for ESP32
+
+void setup() {
+    Serial.begin(115200);
+    Blynk.begin(auth, ssid, pass);
+    pinMode(relayPin, OUTPUT);
+    digitalWrite(relayPin, HIGH); // Ensure relay starts OFF
+}
+
+void loop() {
+    Blynk.run();
+}
